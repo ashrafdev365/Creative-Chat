@@ -1,0 +1,20 @@
+.home_header {
+  text-align: center;
+  padding: 30px 20px 0px;
+  h1 {
+    margin: 20px 0px 15px;
+  }
+  button {
+    padding: 8px 30px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin: 40px 8px 30px;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.37);
+  }
+  .signup_btn {
+    background-color: #643dff;
+    color: white;
+  }
+}
