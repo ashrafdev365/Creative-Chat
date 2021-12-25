@@ -87,6 +87,13 @@
   text-transform: capitalize;
 }
 
+.chat_nav button {
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .chat_nav i {
   font-size: 2rem;
   cursor: pointer;
@@ -98,6 +105,7 @@
   margin: 200px auto 100px;
   padding: 0px 0px;
   overflow-x: auto;
+  word-break: break-all;
 }
 
 .chat_section .left_user p {
@@ -317,18 +325,20 @@
   .chat_nav div img {
     width: 40px;
     border-radius: 50px;
-    margin: 0px 10px 0px 40px;
+    margin: 0px 10px 0px 20px;
   }
   .chat_nav div h2 {
     text-transform: capitalize;
+    font-size: 18px;
   }
   .chat_nav i {
     font-size: 1.3rem;
     cursor: pointer;
     color: rgba(0, 0, 0, 0.555);
+    margin-left: 10px;
   }
   .chat_section {
-    width: 95%;
+    width: 85%;
     margin: 100px auto 50px;
     padding: 0px 0px;
     overflow-x: auto;
@@ -338,7 +348,7 @@
     font-weight: 500;
     font-size: 14px;
     padding: 9px 22px;
-    margin: 0px 0 30px;
+    margin: 0px 0 20px;
     background-color: #2b2bf6;
     float: left;
     clear: both;

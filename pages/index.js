@@ -9,7 +9,7 @@ export default function Home({ setmodel }) {
   const { logout, currentUser } = useAuth();
   const ruoter = useRouter();
   useEffect(() => {
-      currentUser ? ruoter.push(`/user`) : "";
+    currentUser ? ruoter.push(`/user`) : ruoter.push(`/`);
   }, []);
 
   return (
@@ -26,10 +26,18 @@ export default function Home({ setmodel }) {
         <h2>Welcome To My Chat App</h2>
 
         <div>
-          <button className="signup_btn" onClick={() => setmodel(true)}>
-            Create Account
-          </button>
-          <button onClick={() => setmodel(true)}>Log In</button>
+          {!currentUser ? (
+            <>
+              <button className="signup_btn" onClick={() => setmodel(true)}>
+                Create Account
+              </button>
+              <button onClick={() => setmodel(true)}>Log In</button>
+            </>
+          ) : (
+            <button className="signup_btn" onClick={() => ruoter.push("/user")}>
+              Continue to Chat
+            </button>
+          )}
         </div>
       </header>
     </>

@@ -20,7 +20,7 @@ const chat = () => {
 
   const router = useRouter();
   const { data } = userDatas();
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
   const scroll = useRef();
 
   const getUserData = () => {
@@ -43,9 +43,6 @@ const chat = () => {
 
   useEffect(() => {
     getUserData();
-    // setTimeout(() => {
-    //   getUserData();
-    // }, 2000);
   }, []);
 
   const handleUser = async (e) => {
@@ -73,7 +70,12 @@ const chat = () => {
       scroll.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-
+  const handleLogout = () => {
+    logout();
+    setTimeout(() => {
+      router.push("/");
+    }, 1000);
+  };
   return (
     <>
       <nav className="chat_nav">
@@ -97,7 +99,7 @@ const chat = () => {
               })}
           </div>
         </div>
-        <i className="far fa-cog"></i>
+        <button onClick={handleLogout}>Log Out</button>
       </nav>
 
       <section className="chat_section">

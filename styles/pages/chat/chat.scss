@@ -54,6 +54,12 @@
       text-transform: capitalize;
     }
   }
+  button {
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+  }
   i {
     font-size: 2rem;
     cursor: pointer;
@@ -66,7 +72,7 @@
   margin: 200px auto 100px;
   padding: 0px 0px;
   overflow-x: auto;
-
+  word-break: break-all;
   .left_user {
     p {
       color: white;
@@ -78,6 +84,7 @@
       float: left;
       clear: both;
       border-radius: 10px 10px 10px 2px;
+      // word-break: break-all;
     }
   }
   .right_user {
@@ -247,21 +254,23 @@
       img {
         width: 40px;
         border-radius: 50px;
-        margin: 0px 10px 0px 40px;
+        margin: 0px 10px 0px 20px;
       }
       h2 {
         text-transform: capitalize;
+        font-size: 18px;
       }
     }
     i {
       font-size: 1.3rem;
       cursor: pointer;
       color: rgba(0, 0, 0, 0.555);
+      margin-left: 10px;
     }
   }
 
   .chat_section {
-    width: 95%;
+    width: 85%;
     margin: 100px auto 50px;
     padding: 0px 0px;
     overflow-x: auto;
@@ -272,7 +281,7 @@
         font-weight: 500;
         font-size: 14px;
         padding: 9px 22px;
-        margin: 0px 0 30px;
+        margin: 0px 0 20px;
         background-color: rgb(43, 43, 246);
         float: left;
         clear: both;

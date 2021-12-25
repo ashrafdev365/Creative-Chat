@@ -6,21 +6,40 @@ import { userDatas } from "../../Firebase/UserContext";
 import { useRouter } from "next/router";
 
 const user = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
   const { data } = userDatas();
-  const ruoter = useRouter();
+  const router = useRouter();
+  useEffect(() => {
+    if (currentUser) {
+      return "";
+    } else {
+      return router.push("/");
+    }
+  }, []);
+
+  const handleLogout = () => {
+    logout();
+    setTimeout(() => {
+      router.push("/");
+    }, 1000);
+  };
+
   return (
     <>
       <nav className="user_nav">
         <h1>Chat</h1>
-        <img src={currentUser.photoURL} alt="crea" width="55px" height="55px" />
+        <button onClick={handleLogout}>Log Out</button>
       </nav>
       <input type="search" placeholder="Search" className="search" />
 
       <section className="users_section">
+        {/* {currentUser ? (
+          <> */}
         {data
           .filter((value) => {
-            return currentUser.displayName == "ashraf chy"
+            return !currentUser
+              ? router.push("/")
+              : currentUser.displayName == "ashraf chy"
               ? value.id != currentUser.email
               : value.id == "ashrafchy338@gmail.com";
           })
@@ -44,6 +63,10 @@ const user = () => {
               </Link>
             );
           })}
+        {/* </>
+        ) : (
+          router.push("/")
+        )} */}
       </section>
     </>
   );

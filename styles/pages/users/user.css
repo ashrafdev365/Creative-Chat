@@ -13,10 +13,11 @@
   margin: 0 auto;
 }
 
-.user_nav img {
-  width: 55px;
-  height: 58px;
+.user_nav button {
+  padding: 8px 20px;
   border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .search {

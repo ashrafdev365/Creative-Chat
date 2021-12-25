@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Image from "next/image";
 import gog from "../../public/google.svg";
 import fb from "../../public/fb.svg";
@@ -6,65 +5,30 @@ import twitter from "../../public/twitter.svg";
 import github from "../../public/github.svg";
 import { useAuth } from "../../Firebase/Context";
 import { useRouter } from "next/router";
-import {
-  onSnapshot,
-  doc,
-  collection,
-  query,
-  addDoc,
-  setDoc,
-  serverTimestamp,
-} from "firebase/firestore";
-import { db } from "../../Firebase/firebase";
-export const Signup = ({ setmodel, form, setform }) => {
+
+export const Login = ({ setmodel, form, setform }) => {
   const { google, currentUser } = useAuth();
   const router = useRouter();
   const handleGoogle = () => {
     google();
   };
 
-  const handleSigninUser = async () => {
-    if (currentUser) {
-      await setDoc(doc(db, "test", currentUser.email), {
-        userData: {
-          uid: currentUser.uid,
-          name: currentUser.displayName,
-          photo: currentUser.photoURL,
-        },
-      });
-
-      setTimeout(async () => {
-        await addDoc(
-          collection(
-            db,
-            `/test/ashrafchy338@gmail.com/ashraf chy & ${currentUser.displayName}`
-          ),
-          {
-            timestemp: serverTimestamp(),
-            msg: "Hello Ahraf",
-            uid: currentUser.uid,
-          }
-        );
-      }, 1000);
-    } else {
-      return alert("pleace change the state");
-    }
-
+  const handleSigninUser = () => {
     setTimeout(() => {
       router.push("/user");
       setmodel(false);
-    }, 4000);
+    }, 1000);
   };
   return (
     <>
-      {form == false && (
+      {form  && (
         <div className="form">
           <button onClick={() => setmodel(false)} className="close_form">
             <i className="fal fa-times"></i>
           </button>
-          <h1>Sign Up</h1>
+          <h1>Log in</h1>
           <section>
-            <button onClick={() => setform(true)}>Log in</button>
+          <button onClick={() => setform(false)}>Create Account</button>
             <button onClick={handleGoogle}>
               <span>
                 <Image
