@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useAuth } from "../../Firebase/Context";
 import Link from "next/link";
@@ -9,14 +9,14 @@ const user = () => {
   const { currentUser, logout } = useAuth();
   const { data } = userDatas();
   const router = useRouter();
-  useEffect(() => {
-    if (currentUser) {
-      return "";
-    } else {
-      return router.push("/");
-    }
-  }, []);
-
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     return "";
+  //   } else {
+  //     return router.push("/");
+  //   }
+  // }, []);
+  console.log(currentUser);
   const handleLogout = () => {
     logout();
     setTimeout(() => {
@@ -33,8 +33,6 @@ const user = () => {
       <input type="search" placeholder="Search" className="search" />
 
       <section className="users_section">
-        {/* {currentUser ? (
-          <> */}
         {data
           .filter((value) => {
             return !currentUser
@@ -47,13 +45,21 @@ const user = () => {
             return (
               <Link
                 key={val.id}
-                href={{ pathname: `user/${val.userData.name}` }}
+                href={{
+                  pathname: `user/${
+                    val.userData.name == "ashraf chy"
+                      ? currentUser.displayName
+                      : val.userData.name
+                  }`,
+                }}
               >
                 <div className="user_box">
-                  <img
+                  <Image
                     src={val.userData.photo}
                     alt="creative chat"
                     className="user_img"
+                    width="50px"
+                    height="50px"
                   />
                   <div>
                     <h2>{val.userData.name}</h2>
@@ -63,10 +69,6 @@ const user = () => {
               </Link>
             );
           })}
-        {/* </>
-        ) : (
-          router.push("/")
-        )} */}
       </section>
     </>
   );

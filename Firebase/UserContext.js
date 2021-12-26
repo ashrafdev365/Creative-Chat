@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useContext } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 import { db } from "./firebase";
 import {
   onSnapshot,
@@ -16,7 +16,7 @@ const UserDataProvider = ({ children }) => {
 
   useEffect(() => {
     //this is for sort messages by time
-    const q = query(collection(db, "test"));
+    const q = query(collection(db, "creative-chat"));
     //this is for show all new massage instently
     const userData = onSnapshot(q, (snapshot) => {
       setdata(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));

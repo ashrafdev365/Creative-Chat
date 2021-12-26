@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { db } from "../../Firebase/firebase";
 import {
@@ -22,16 +22,12 @@ const chat = () => {
   const { data } = userDatas();
   const { currentUser, logout } = useAuth();
   const scroll = useRef();
-
+  console.log(router.query.chat);
   const getUserData = () => {
     const q = query(
       collection(
         db,
-        `/test/${"ashrafchy338@gmail.com"}/ashraf chy & ${
-          router.query.chat == "ashraf chy"
-            ? currentUser.displayName
-            : router.query.chat
-        }`
+        `/creative-chat/ashrafchy338@gmail.com/ashraf chy & ${router.query.chat}`
       ),
       orderBy("timestemp", "asc")
     );
@@ -42,7 +38,9 @@ const chat = () => {
   };
 
   useEffect(() => {
-    getUserData();
+    setTimeout(() => {
+      getUserData();
+    }, 2000);
   }, []);
 
   const handleUser = async (e) => {
@@ -54,11 +52,7 @@ const chat = () => {
       const value = await addDoc(
         collection(
           db,
-          `/test/ashrafchy338@gmail.com/ashraf chy & ${
-            router.query.chat == "ashraf chy"
-              ? currentUser.displayName
-              : router.query.chat
-          }`
+          `/creative-chat/ashrafchy338@gmail.com/ashraf chy & ${router.query.chat}`
         ),
         {
           timestemp: serverTimestamp(),
@@ -132,3 +126,10 @@ const chat = () => {
 };
 
 export default chat;
+
+
+// ${
+//   router.query.chat=="ashraf chy"
+//     ? currentUser.displayName
+//     : router.query.chat
+// }

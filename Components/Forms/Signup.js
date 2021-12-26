@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import gog from "../../public/google.svg";
 import fb from "../../public/fb.svg";
@@ -17,6 +17,10 @@ import {
 } from "firebase/firestore";
 import { db } from "../../Firebase/firebase";
 export const Signup = ({ setmodel, form, setform }) => {
+  const [img, setimg] = useState({
+    width: "40px",
+    height: "40px",
+  });
   const { google, currentUser } = useAuth();
   const router = useRouter();
   const handleGoogle = () => {
@@ -25,7 +29,7 @@ export const Signup = ({ setmodel, form, setform }) => {
 
   const handleSigninUser = async () => {
     if (currentUser) {
-      await setDoc(doc(db, "test", currentUser.email), {
+      await setDoc(doc(db, "creative-chat", currentUser.email), {
         userData: {
           uid: currentUser.uid,
           name: currentUser.displayName,
@@ -37,7 +41,7 @@ export const Signup = ({ setmodel, form, setform }) => {
         await addDoc(
           collection(
             db,
-            `/test/ashrafchy338@gmail.com/ashraf chy & ${currentUser.displayName}`
+            `/creative-chat/ashrafchy338@gmail.com/ashraf chy & ${currentUser.displayName}`
           ),
           {
             timestemp: serverTimestamp(),
@@ -55,6 +59,18 @@ export const Signup = ({ setmodel, form, setform }) => {
       setmodel(false);
     }, 4000);
   };
+  useEffect(() => {
+    window.innerWidth <= 550
+      ? setimg({
+          width: "30px",
+          height: "30px",
+        })
+      : setimg({
+          width: "40px",
+          height: "40px",
+        });
+  }, []);
+  const { width, height } = img;
   return (
     <>
       {form == false && (
@@ -64,15 +80,17 @@ export const Signup = ({ setmodel, form, setform }) => {
           </button>
           <h1>Sign Up</h1>
           <section>
-            <button onClick={() => setform(true)}>Log in</button>
+            <button onClick={() => setform(true)} className="login_form_btn">
+              Log in
+            </button>
             <button onClick={handleGoogle}>
               <span>
                 <Image
                   src={gog}
                   alt="creative chat"
                   title="creative chat sign up"
-                  width="40px"
-                  height="40px"
+                  width={width}
+                  height={height}
                 />
               </span>
               Continue With Google
@@ -82,8 +100,8 @@ export const Signup = ({ setmodel, form, setform }) => {
                 <Image
                   src={fb}
                   alt="creative chat"
-                  width="40px"
-                  height="40px"
+                  width={width}
+                  height={height}
                   title="creative chat sign up"
                 />
               </span>
@@ -95,8 +113,8 @@ export const Signup = ({ setmodel, form, setform }) => {
                   src={twitter}
                   alt="creative chat"
                   title="creative chat sign up"
-                  width="40px"
-                  height="40px"
+                  width={width}
+                  height={height}
                 />
               </span>
               Continue With Twitter
@@ -107,8 +125,8 @@ export const Signup = ({ setmodel, form, setform }) => {
                   src={github}
                   alt="creative chat"
                   title="creative chat sign up"
-                  width="40px"
-                  height="40px"
+                  width={width}
+                  height={height}
                 />
               </span>
               Continue With Github

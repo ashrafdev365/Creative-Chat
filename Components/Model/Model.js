@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Signup } from "../Forms/Signup";
 import { Login } from "../Forms/Login";
 export const Model = ({ model, setmodel }) => {
-  const [form, setform] = useState(false)
+  const [form, setform] = useState(false);
   return (
     <>
       {model && (

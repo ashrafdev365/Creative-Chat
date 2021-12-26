@@ -17,14 +17,24 @@
     padding: 3px 15px;
     border-radius: 50px;
     cursor: pointer;
+    transition-duration: 0.7s;
+  }
+  .close_form:hover {
+    background-color: tomato;
+    color: white;
   }
   h1 {
     margin: 30px 0px 40px;
   }
+
   section {
     display: flex;
     flex-direction: column;
-
+    .login_form_btn {
+      font-size: 20px;
+      background-color: #7c5cff;
+      color: white;
+    }
     button {
       display: flex;
       align-items: center;
@@ -38,9 +48,13 @@
       background-color: white;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.329);
       cursor: pointer;
+      transition-duration: 0.7s;
       span {
         margin-right: 10px;
       }
+    }
+    button:hover {
+      transform: scale(1.1);
     }
     .continue {
       background-color: #643dff;
@@ -51,3 +65,63 @@
     }
   }
 }
+
+@media screen and (max-width: 550px) {
+  .form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px 30px 60px;
+    border-radius: 4px;
+    background-color: white;
+    width: 95%;
+    text-align: center;
+    position: relative;
+    .close_form {
+      position: absolute;
+      top: 5%;
+      left: 10%;
+      font-size: 22px;
+      padding: 5px 15px;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+    h1 {
+      margin: 30px 0px 40px;
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      .login_form_btn {
+        font-size: 18px;
+      }
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        height: 55px;
+        margin: 6px auto;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.157);
+        cursor: pointer;
+        span {
+          margin-right: 10px;
+        }
+      }
+      .continue {
+        background-color: #643dff;
+        color: white;
+        width: 80%;
+        height: 55px;
+        margin: 50px auto 10px;
+      }
+    }
+  }
+}
+
+
