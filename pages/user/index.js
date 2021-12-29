@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useAuth } from "../../Firebase/Context";
 import Link from "next/link";

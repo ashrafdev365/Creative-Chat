@@ -15,7 +15,7 @@ import {
   setDoc,
   serverTimestamp,
 } from "firebase/firestore";
-import { db } from "../../Firebase/firebase";
+import { db } from "../../Firebase/_firebase";
 export const Signup = ({ setmodel, form, setform }) => {
   const [img, setimg] = useState({
     width: "40px",

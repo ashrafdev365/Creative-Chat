@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-import { db } from "../../Firebase/firebase";
+import { db } from "../../Firebase/_firebase";
 import {
   onSnapshot,
   doc,
@@ -126,7 +126,6 @@ const chat = () => {
 };
 
 export default chat;
-
 
 // ${
 //   router.query.chat=="ashraf chy"
